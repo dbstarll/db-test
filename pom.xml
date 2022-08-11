@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.github.dbstarll.parent</groupId>
+    <artifactId>boot</artifactId>
+    <version>1.2.2</version>
+  </parent>
+  <groupId>io.github.dbstarll.db</groupId>
+  <artifactId>db-test</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <description>Database test utils</description>
+  <url>https://github.com/dbstarll/db-test</url>
+
+  <scm>
+    <connection>scm:git:${project.git.git.root}</connection>
+    <developerConnection>scm:git:${project.git.web.root}</developerConnection>
+    <url>${project.git.web.master}</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <properties>
+    <project.git.project>db-test</project.git.project>
+    <!-- module version -->
+    <version.flink>1.13.5</version.flink>
+    <version.scala>2.11</version.scala>
+    <version.druid>1.2.8</version.druid>
+    <version.logback>1.2.9</version.logback>
+    <version.h2>2.0.204</version.h2>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.flink</groupId>
+      <artifactId>flink-runtime_${version.scala}</artifactId>
+      <version>${version.flink}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>${version.druid}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${version.logback}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>${version.h2}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.ververica</groupId>
+      <artifactId>flink-connector-mysql-cdc</artifactId>
+      <version>2.1.1</version>
+    </dependency>
+  </dependencies>
+
+  <profiles>
+    <profile>
+      <id>site-local</id>
+      <distributionManagement>
+        <site>
+          <id>local</id>
+          <url>${project.site.root.project}</url>
+        </site>
+      </distributionManagement>
+    </profile>
+  </profiles>
+</project>
